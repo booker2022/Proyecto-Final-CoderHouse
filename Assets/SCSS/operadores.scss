@@ -1,0 +1,59 @@
+/*
+__________________________________________
+map  -  map-get
+*/
+$mapa_cajas:(caja1: 10 , caja2: 20 ,caja3:  30 ,caja4: 40);
+
+@each $nombre_caja, $dimension in $mapa_cajas {
+    
+    .div-#{$nombre_caja} {
+        
+        border-style: solid;
+        border: 2px;
+        width: $dimension+rem;
+        width: $dimension+rem;
+        font-size: map-get($mapa_cajas,caja1)/10+rem;
+    }
+    
+}
+
+/*
+__________________________________________
+EXTEND
+*/
+.caja_base{
+    
+    background-color: white;
+    text-align: center;
+    border: 1px solid black;
+    height: 5rem;
+    width: 50rem;
+    
+}
+
+.caja_base_ampliada {
+    @extend .caja_base;
+    height: 10rem;
+    width: 100rem;
+    background-color: yellow;
+}    
+
+/*
+    <div class = "caja_base_ampliada">
+
+____________________________________________
+MAXIN
+*/
+
+@mixin estructura-caja($ancho, $alto, $color_fondo) {
+    width: $ancho;
+    height: $alto;
+    background-color: $color_fondo;
+}
+
+.caja_chica {
+    @include estructura-caja(20rem, 40rem, red);
+    border:.5rem;
+    
+}
+
